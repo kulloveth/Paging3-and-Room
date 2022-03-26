@@ -7,7 +7,6 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dev.kulloveth.countriesandlanguages.data.db.Cal
-import dev.kulloveth.countriesandlanguages.data.db.CalDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

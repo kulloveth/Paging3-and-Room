@@ -7,31 +7,26 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.ListenableWorker
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.workDataOf
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import dev.kulloveth.countriesandlanguages.worker.SeedDatabaseWork
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(entities = [Cal::class], version = 1)
 @TypeConverters(LanguageConverter::class)
-abstract class CalDatabase:RoomDatabase() {
+abstract class CountryDatabase:RoomDatabase() {
 
-abstract fun calDao():CalDao
+abstract fun calDao():CountryDao
 
 companion object{
     @Volatile
-    private var INSTANCE:CalDatabase? =null
+    private var INSTANCE:CountryDatabase? =null
 
-    fun getDatabase(context: Context,coroutineScope: CoroutineScope): CalDatabase {
+    fun getDatabase(context: Context,coroutineScope: CoroutineScope): CountryDatabase {
         return INSTANCE ?: synchronized(this) {
             val instance = Room.databaseBuilder(
                 context,
-                CalDatabase::class.java,
+                CountryDatabase::class.java,
                 "cal_database")
                 .addCallback(object :RoomDatabase.Callback(){
                     override fun onCreate(db: SupportSQLiteDatabase) {
@@ -50,7 +45,7 @@ companion object{
         }
     }
 
-   suspend fun insertData(context: Context,dao: CalDao){
+   suspend fun insertData(context: Context,dao: CountryDao){
        context.assets.open("data.json").bufferedReader().use { inputStream ->
            val cal = object : TypeToken<List<Cal>>() {}.type
            val calList: List<Cal> = Gson().fromJson(inputStream.readText(), cal)

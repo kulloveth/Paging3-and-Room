@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.kulloveth.countriesandlanguages.data.db.Cal
 import dev.kulloveth.countriesandlanguages.databinding.CalItemBinding
 
-class CalAdapter:PagingDataAdapter<Cal,CalAdapter.CalViewHolder>(CalDiffUtil) {
+class CountryPagingAdapter:PagingDataAdapter<Cal,CountryPagingAdapter.CalViewHolder>(CalDiffUtil) {
 
     override fun onBindViewHolder(holder: CalViewHolder, position: Int) {
         val  cal = getItem(position)

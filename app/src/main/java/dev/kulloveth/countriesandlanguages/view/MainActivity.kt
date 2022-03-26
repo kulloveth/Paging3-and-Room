@@ -2,10 +2,8 @@ package dev.kulloveth.countriesandlanguages.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.filter
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.kulloveth.countriesandlanguages.app.App
 import dev.kulloveth.countriesandlanguages.app.AppScope
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val factory = CalViewModel.Factory(repository)
         val viewModel = ViewModelProvider(this, factory)[CalViewModel::class.java]
 
-        val adapter = CalAdapter()
+        val adapter = CountryPagingAdapter()
 
         binding.calRv.adapter = adapter
         binding.calRv.layoutManager = LinearLayoutManager(this)

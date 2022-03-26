@@ -3,7 +3,6 @@ package dev.kulloveth.countriesandlanguages.view
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.kulloveth.countriesandlanguages.data.db.Cal
 import dev.kulloveth.countriesandlanguages.databinding.CalItemBinding
 
-class CalAdapter2:ListAdapter<Cal,CalAdapter2.CalViewHolder>(CalDiffUtil) {
+class CountryAdapter:ListAdapter<Cal,CountryAdapter.CalViewHolder>(CalDiffUtil) {
 
     override fun onBindViewHolder(holder: CalViewHolder, position: Int) {
         val  cal = getItem(position)
